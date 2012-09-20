@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.foo{
+			width: 500px;
+		}
+	</style>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(){
+			var div = document.createElement("div");
+			div.setAttribute("class", "foo");
+			console.log(div.offsetWidth);
+			document.body.appendChild(div);
+			console.log(div.offsetWidth);
+			div.style.visibility = "none";
+			console.log(div.offsetWidth);
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

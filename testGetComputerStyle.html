@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#ele-container{
+			height: 100px;
+			position:absolute;
+			top: 10px;
+			left: 100px;
+			-webkit-transform: translate(10px, 6px) translateZ(5px);
+		}
+	</style>
+</head>
+<body>
+	<div id="ele-container">dummy</div>
+	<div id="output"></div>
+</body>
+<script type="text/javascript">
+	function getTheStyle(){
+		var ele = document.getElementById("ele-container");
+		var theCSSProp = getComputedStyle(ele, null).getPropertyValue("webkitTransform");
+		console.log(getComputedStyle(ele, null));
+		console.log(theCSSProp);
+		document.getElementById("output").innerHTML = theCSSProp;
+	}
+	
+	getTheStyle();
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	
+	<script type="text/javascript">
+		var i, length = 100000000, value = 2.888830212912019,
+			startDate = new Date(), endDate;
+		
+		for(i = 0; i < length; i++){
+			Math.round(value);
+		}
+		
+		endDate = new Date();
+		console.log("round time:" + (endDate - startDate));
+		
+		startDate = new Date();
+		
+		for(i = 0; i < length; i++){
+			value.toFixed(2);
+		}
+		endDate = new Date();
+		console.log("toFixed time:" + (endDate - startDate));
+		
+		startDate = new Date();
+		
+		for(i = 0; i < length; i++){
+			Math.round(value * 100) / 100;
+		}
+		endDate = new Date();
+		console.log("simulate toFixed by math operator time:" + (endDate - startDate));
+		
+		startDate = new Date();
+		
+		for(i = 0; i < length; i++){
+			Math.floor(value);
+		}
+		endDate = new Date();
+		console.log("floor time:" + (endDate - startDate));
+		
+		
+		startDate = new Date();
+		for(i = 0; i < length; i++){
+			~~value;
+		}
+		endDate = new Date();
+		console.log("bit operator time:" + (endDate - startDate));
+		
+		console.log(~~value);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

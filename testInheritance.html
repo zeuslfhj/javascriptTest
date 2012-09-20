@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		var Foo = function(p){
+			this.a = p;
+		}
+		
+		Foo.prototype.c = function(){
+			console.log("this is foo's c function");
+		}
+		
+		Foo.prototype.b = function(){
+			console.log(this.a);
+		}
+		
+		var Inheritance = function(){};
+		
+		Inheritance.prototype = Foo.prototype;
+		
+		Inheritance.prototype.b = function(){
+			console.log("this is inheritance b");
+		}
+		
+		var temp = new Inheritance();
+		temp.b();
+		temp.c();
+		console.log("temp object's constructor equal Class Foo:" + temp.constructor === Foo);
+		console.log("temp object's constructor equal Class Inheritance:" + temp.constructor === Inheritance);
+		console.log(Foo);
+		console.log(temp.constructor);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
