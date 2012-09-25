@@ -16,19 +16,31 @@
 			console.log(this.a);
 		}
 		
-		var Inheritance = function(){};
+		var Inheritance = function(){
+			Foo.apply(this, arguments);
+		};
 		
-		Inheritance.prototype = Foo.prototype;
-		
-		Inheritance.prototype.b = function(){
-			console.log("this is inheritance b");
+		for(var i in Foo.prototype){
+			Inheritance.prototype[i] = Foo.prototype[i];
 		}
 		
-		var temp = new Inheritance();
+		Inheritance.prototype.constructor = Inheritance;
+		
+		Inheritance.prototype.b = function(){
+			console.log("this is inheritance b, value of a:" + this.a);
+			
+		}
+		
+		var temp = new Inheritance(13);
+		var temp2 = new Foo(14);
 		temp.b();
+		temp2.b();
 		temp.c();
-		console.log("temp object's constructor equal Class Foo:" + temp.constructor === Foo);
-		console.log("temp object's constructor equal Class Inheritance:" + temp.constructor === Inheritance);
+		temp.c();
+		console.log("temp object's constructor equal Class Foo:" + (temp.constructor === Foo));
+		console.log("temp object's constructor equal Class Inheritance:" + (temp.constructor === Inheritance));
+		console.log("temp object's constructor instance of Class Foo:" + (temp instanceof Foo));
+		console.log("temp object's constructor instance of Class Inheritance:" + (temp instanceof Inheritance));
 		console.log(Foo);
 		console.log(temp.constructor);
 	</script>
