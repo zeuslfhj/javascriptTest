@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript">
+		var oriObj = function(){
+			console.log("original object constructor");
+		}
+		
+		oriObj.prototype.a = function(){
+			console.log("original object called");
+		}
+		
+		console.log(oriObj);
+		var b = {
+			  // foo is a regular "value property"
+			  foo: { writable:true, configurable:true, value: "hello" },
+			  // bar is a getter-and-setter (accessor) property
+			  bar: {
+				configurable: false,
+				get: function() { return 14 },
+				set: function(value) { console.log("Setting `o.bar` to", value) }
+			}};
+		oriObj = Object.create(oriObj.prototype, b);
+		console.log(oriObj);
+		console.log(oriObj.bar);
+		oriObj.bar = 13;
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
